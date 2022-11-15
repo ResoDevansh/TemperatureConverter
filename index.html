@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1{
+            text-align: center;
+        }
+        #container{
+            text-align: center;
+            height: 200px;
+            background-color: aqua;
+        }
+        .input{
+            display: block;
+            text-align: center;
+            margin: 20% auto auto auto;
+            height: 20%;
+            color: red;
+            font-weight: 900;
+        }
+        .container-children{
+            display: inline-block;
+            height: 90%;
+            margin: auto 5%;
+        }
+        label{
+            font-size: 20px;
+            font-weight: 800;
+            margin-top: 20px;
+        }
+        body{
+            background-image: url("pexels-photo-1227515.jpeg");
+        }
+    </style>
+</head>
+<body>
+    <h1>Temperature Converter</h1>
+    <div id="container">
+        <div id="cel" class="container-children">
+            <label>Celsius</label>
+            <input type="number" class="input" value="0" id="cel-input">
+        </div>
+        <div id="fah" class="container-children">
+            <label>Farenheit</label>
+            <input type="number" class="input" value="30" id="fah-input">
+        </div>
+    </div>
+    <script>
+        let celBlock=document.getElementById("cel-input");
+        let fahBlock=document.getElementById("fah-input");
+        celBlock.addEventListener("input",function(){
+            let c=this.value;
+            let f=(9*c)/5+32;
+            if(!Number.isInteger(f)){
+                f=f.toFixed(4);
+            }
+            fahBlock.value=f;
+        });
+        fahBlock.addEventListener("input",function(){
+            let f=this.value;
+            let c=(f-32)*(5/9);
+            if(!Number.isInteger(c)){
+                c=c.toFixed(4);
+            }
+            celBlock.value=c;
+        });
+    </script>
+</body>
+</html>
